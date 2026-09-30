@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum AccountStatus { ACTIVE SUSPENDED CLOSED }
+enum TaskStatus { DRAFT ACTIVE PAUSED ARCHIVED }
+enum WithdrawalStatus { PENDING UNDER_REVIEW APPROVED REJECTED PROCESSING PAID FAILED }
+enum LedgerType { CREDIT DEBIT }
+
+model User {
+  id            String        @id @default(cuid())
+  name          String
+  phone         String        @unique
+  status        AccountStatus @default(ACTIVE)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  consents      Consent[]
+  taskClaims    TaskClaim[]
+  ledgerEntries LedgerEntry[]
+  withdrawals   Withdrawal[]
+  @@index([status, createdAt])
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  auditLogs    AuditLog[]
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  title       String
+  description String     @db.Text
+  category    String
+  rewardPaise Int
+  status      TaskStatus @default(DRAFT)
+  startsAt    DateTime?
+  endsAt      DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  claims      TaskClaim[]
+  @@index([status, category])
+}
+
+model TaskClaim {
+  id          String   @id @default(cuid())
+  userId      String
+  taskId      String
+  status      String   @default("PENDING")
+  providerRef String?  @unique
+  createdAt   DateTime @default(now())
+  reviewedAt  DateTime?
+  user        User     @relation(fields: [userId], references: [id])
+  task        Task     @relation(fields: [taskId], references: [id])
+  @@unique([userId, taskId])
+  @@index([status, createdAt])
+}
+
+model LedgerEntry {
+  id          String     @id @default(cuid())
+  userId      String
+  type        LedgerType
+  amountPaise Int
+  reference   String     @unique
+  description String
+  createdAt   DateTime   @default(now())
+  user        User       @relation(fields: [userId], references: [id])
+  @@index([userId, createdAt])
+}
+
+model Withdrawal {
+  id              String           @id @default(cuid())
+  userId          String
+  amountPaise     Int
+  upiIdEncrypted  String
+  status          WithdrawalStatus @default(PENDING)
+  idempotencyKey  String           @unique
+  providerRef     String?          @unique
+  reviewedBy      String?
+  reviewReason    String?          @db.Text
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  user            User             @relation(fields: [userId], references: [id])
+  @@index([status, createdAt])
+}
+
+model Consent {
+  id        String   @id @default(cuid())
+  userId    String
+  purpose   String
+  version   String
+  granted   Boolean
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  @@index([userId, purpose, createdAt])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  adminId    String?
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+  admin      Admin?   @relation(fields: [adminId], references: [id])
+  @@index([entityType, entityId, createdAt])
+}
