@@ -1,0 +1,21 @@
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import { z } from 'zod';
+
+const app = express();
+const port = Number(process.env.PORT || 4000);
+const allowedOrigins = [process.env.WEB_ORIGIN, process.env.ADMIN_ORIGIN].filter(Boolean);
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(cors({ origin(origin, callback) { if (!origin || allowedOrigins.includes(origin)) return callback(null, true); return callback(new Error('Origin not allowed')); }, credentials: true }));
+app.use(express.json({ limit: '32kb' }));
+app.use('/api', rateLimit({ windowMs: 60_000, limit: 120, standardHeaders: 'draft-7', legacyHeaders: false }));
+app.get('/health', (_req, res) => res.json({ ok: true, service: 'paisakamao-api' }));
+app.get('/api/tasks', (_req, res) => res.status(501).json({ error: 'NOT_IMPLEMENTED', message: 'Connect task service and database before enabling customer tasks.' }));
+app.get('/api/wallet', (_req, res) => res.status(501).json({ error: 'NOT_IMPLEMENTED', message: 'Wallet requires authenticated customer session.' }));
+app.post('/api/withdrawals', (_req, res) => res.status(501).json({ error: 'NOT_IMPLEMENTED', message: 'Payout processing is disabled until authentication, ledger and provider verification are implemented.' }));
+app.use((err, _req, res, _next) => { if (err instanceof z.ZodError) return res.status(400).json({ error: 'VALIDATION_ERROR' }); if (err.message === 'Origin not allowed') return res.status(403).json({ error: 'ORIGIN_NOT_ALLOWED' }); console.error(err); return res.status(500).json({ error: 'INTERNAL_ERROR' }); });
+app.listen(port, () => console.log('PaisaKamao API listening on port ' + port));
