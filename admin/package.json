@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "latest",
+    "@vitejs/plugin-react": "^4.3.4",
     "@tanstack/react-query": "^5.62.0",
     "axios": "^1.7.9",
     "lucide-react": "^0.468.0",
