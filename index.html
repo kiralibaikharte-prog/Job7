@@ -1,22 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1e40af"><title>PaisaKamao — Earn with everyday tasks</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>body{font-family:Inter,sans-serif}h1,h2,h3{font-family:Poppins,sans-serif}.btn{min-height:48px;border-radius:12px;padding:12px 18px;font-weight:700}.card{background:white;border:1px solid #e8edf4;border-radius:18px;box-shadow:0 8px 28px #0f172a08}.skeleton{background:#e2e8f0;animation:pulse 1.3s infinite}@keyframes pulse{50%{opacity:.5}}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}/* Neon theming and randomized molecule backdrop inspired by the reference. */
- :root{--accent:#00e5ff;--accent2:#8b5cf6;--glow:rgba(0,229,255,.22);--site-bg:#05080e;--site-font:Inter,sans-serif;--heading-font:"Space Mono",monospace}
-body{position:relative;background:var(--site-bg);color:#f5f7ff;font-family:var(--site-font)}h1,h2,h3,h4,.btn,button{font-family:var(--heading-font)}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 70% 10%,color-mix(in srgb,var(--accent2) 15%,transparent),transparent 45%),radial-gradient(ellipse at 10% 70%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 50%),var(--site-bg)}
-#molecule-bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.8}
-header{background:rgba(3,7,13,.86)!important;border-color:color-mix(in srgb,var(--accent) 25%,transparent)!important;backdrop-filter:blur(16px)}
-header a[href="#home"]{color:var(--accent)!important}header a[href="#home"] span{background:linear-gradient(135deg,var(--accent),var(--accent2))!important}
-.btn.bg-amber-400{background:linear-gradient(110deg,var(--accent),var(--accent2))!important;color:#05080e!important;box-shadow:0 0 22px var(--glow)}
-.btn.bg-blue-700,.filter.bg-blue-700{background:var(--accent)!important;color:#05080e!important}
-.text-blue-700,.text-blue-800{color:var(--accent)!important}.bg-blue-50{background:color-mix(in srgb,var(--accent) 9%,#080d16)!important}
-.card{background:rgba(10,15,24,.88);color:#f5f7ff;border-color:color-mix(in srgb,var(--accent) 20%,#263244);box-shadow:0 12px 36px #0005,0 0 24px var(--glow)}
-.card .text-slate-500,.card .text-slate-600{color:#aab6c8!important}.card .bg-slate-50{background:#111925!important}.card input{background:#0b111b;color:#fff;border-color:#334155}
-#tasks{background:rgba(4,8,14,.72)!important;border-color:color-mix(in srgb,var(--accent) 20%,transparent)!important}#wallet .bg-slate-900{background:linear-gradient(135deg,#090d15,#111827)!important;border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);box-shadow:0 0 28px var(--glow)}
-#refer{background:rgba(7,12,20,.82)!important}footer{background:#020408!important;border-top:1px solid color-mix(in srgb,var(--accent) 22%,transparent)}
-#themeToggle{border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);color:var(--accent);border-radius:12px;padding:8px 10px;font-size:12px;font-weight:700;background:#07101a}
-@media(prefers-reduced-motion:reduce){#molecule-bg{display:none}}
-</style></head>
-<body class="bg-slate-50 text-slate-900"><canvas id="molecule-bg" aria-hidden="true"></canvas><header class="sticky top-0 z-30 bg-white/95 border-b border-slate-100"><div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between"><a href="#home" class="font-bold text-xl text-blue-800 flex items-center gap-2"><span class="bg-blue-700 text-white rounded-xl w-9 h-9 grid place-items-center">₹</span>PaisaKamao</a><nav class="hidden md:flex gap-5 text-sm"><a href="#tasks">Tasks</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav><div class="flex gap-2 items-center"><button id="themeToggle" type="button" aria-label="Change color theme">✦ Theme</button><button id="language" class="border rounded-xl px-3 py-2 text-sm">हिंदी</button><span id="balanceChip" class="hidden sm:block text-emerald-700 font-bold text-sm">₹0.00</span><button id="login" class="btn bg-amber-400">Login / Sign up</button></div></div></header>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1e40af"><title>PaisaKamao — Earn with everyday tasks</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"><style>body{font-family:Inter,sans-serif}h1,h2,h3{font-family:Poppins,sans-serif}.btn{min-height:48px;border-radius:12px;padding:12px 18px;font-weight:700}.card{background:white;border:1px solid #e8edf4;border-radius:18px;box-shadow:0 8px 28px #0f172a08}.skeleton{background:#e2e8f0;animation:pulse 1.3s infinite}@keyframes pulse{50%{opacity:.5}}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}</style></head>
+<body class="bg-slate-50 text-slate-900"><header class="sticky top-0 z-30 bg-white/95 border-b border-slate-100"><div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between"><a href="#home" class="font-bold text-xl text-blue-800 flex items-center gap-2"><span class="bg-blue-700 text-white rounded-xl w-9 h-9 grid place-items-center">₹</span>PaisaKamao</a><nav class="hidden md:flex gap-5 text-sm"><a href="#tasks">Tasks</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav><div class="flex gap-2 items-center"><button id="language" class="border rounded-xl px-3 py-2 text-sm">हिंदी</button><span id="balanceChip" class="hidden sm:block text-emerald-700 font-bold text-sm">₹0.00</span><button id="login" class="btn bg-amber-400">Login / Sign up</button></div></div></header>
 <main id="home"><section class="bg-gradient-to-br from-blue-950 via-blue-800 to-blue-600 text-white"><div class="max-w-7xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center"><div><span class="rounded-full bg-white/15 px-3 py-2 text-sm">🇮🇳 Made for India · UPI payouts</span><h1 class="text-4xl md:text-6xl font-bold leading-tight mt-6" data-en="Your time. Your tasks. Your rewards." data-hi="आपका समय। आपके काम। आपके रिवॉर्ड।">Your time. Your tasks. Your rewards.</h1><p class="text-blue-100 text-lg mt-5">Complete eligible finance, insurance and health tasks. Track every reward transparently.</p><a href="#tasks" class="btn bg-amber-400 text-slate-950 inline-flex mt-7">Explore tasks →</a><div class="flex flex-wrap gap-4 mt-7 text-sm text-blue-100"><span>✓ Clear reward terms</span><span>✓ Secure account</span><span>✓ UPI withdrawals</span></div></div><div class="card text-slate-900 p-7"><p class="text-slate-500">Your rewards wallet</p><div id="heroBalance" class="text-4xl font-bold mt-2">₹0.00</div><div class="mt-6 bg-emerald-50 rounded-xl p-4"><b class="text-emerald-700">Start with a task</b><p class="text-sm text-slate-600 mt-1">Rewards are credited after verification.</p></div><div class="grid grid-cols-3 gap-2 mt-5 text-center text-sm"><div class="bg-slate-50 rounded-xl p-3 font-bold">Tasks</div><div class="bg-slate-50 rounded-xl p-3 font-bold">UPI</div><div class="bg-slate-50 rounded-xl p-3 font-bold">Wallet</div></div></div></div></section>
 <section id="how" class="max-w-7xl mx-auto px-4 py-16"><div class="text-center"><p class="text-blue-700 font-bold">SIMPLE BY DESIGN</p><h2 class="text-3xl font-bold mt-2">How it works</h2></div><div class="grid md:grid-cols-3 gap-5 mt-8"><article class="card p-6"><div class="text-3xl">📱</div><h3 class="font-bold text-xl mt-4">1. Create your account</h3><p class="text-slate-500 mt-2">Verify your mobile number and review the terms.</p></article><article class="card p-6"><div class="text-3xl">🧩</div><h3 class="font-bold text-xl mt-4">2. Complete a task</h3><p class="text-slate-500 mt-2">Check eligibility and reward conditions first.</p></article><article class="card p-6"><div class="text-3xl">🏦</div><h3 class="font-bold text-xl mt-4">3. Receive rewards</h3><p class="text-slate-500 mt-2">Verified rewards appear in your wallet.</p></article></div></section>
 <section id="tasks" class="bg-white border-y"><div class="max-w-7xl mx-auto px-4 py-16"><div class="flex flex-wrap justify-between items-end gap-4"><div><p class="text-blue-700 font-bold">OPPORTUNITIES</p><h2 class="text-3xl font-bold mt-2">Explore tasks</h2><p class="text-slate-500 mt-2">Illustrative demo tasks. Sign in to track progress.</p></div><div id="filters" class="flex flex-wrap gap-2"><button class="filter rounded-full bg-blue-700 text-white px-4 py-2 text-sm" data-filter="all">All</button><button class="filter rounded-full bg-slate-100 px-4 py-2 text-sm" data-filter="finance">Finance</button><button class="filter rounded-full bg-slate-100 px-4 py-2 text-sm" data-filter="insurance">Insurance</button><button class="filter rounded-full bg-slate-100 px-4 py-2 text-sm" data-filter="health">Health</button></div></div><div id="tasksList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8"><div class="skeleton h-48 rounded-2xl"></div></div></div></section>
@@ -83,33 +67,4 @@ function openModal(){document.querySelector('#modal').classList.remove('hidden')
   ctx.clearRect(0,0,w,h);
   const maxDistance=Math.min(125,Math.max(75,Math.min(w,h)*.11));
   for(let i=0;i<nodes.length;i++){
-   const a=nodes[i];a.x+=a.vx;a.y+=a.vy;
-   if(a.x<-10)a.x=w+10;if(a.x>w+10)a.x=-10;
-   if(a.y<-10)a.y=h+10;if(a.y>h+10)a.y=-10;
-   for(let j=i+1;j<nodes.length;j++){
-    const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
-    if(d<maxDistance){
-     const alpha=Math.round((.06+(1-d/maxDistance)*.24)*255).toString(16).padStart(2,'0');
-     ctx.strokeStyle=theme.a+alpha;ctx.lineWidth=.65+(1-d/maxDistance)*.45;
-     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-    }
-   }
-   const pulse=.65+.35*Math.sin(t*a.pulse+a.p);
-   ctx.beginPath();ctx.fillStyle=i%2?theme.b:theme.a;
-   ctx.globalAlpha=.5+.5*pulse;ctx.shadowColor=i%2?theme.b:theme.a;ctx.shadowBlur=5+8*pulse;
-   ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
-  }
-  ctx.globalAlpha=1;ctx.shadowBlur=0;
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)raf=requestAnimationFrame(draw);
- }
- function randomize(){
-  const nextThemes=themes.filter(x=>x!==theme);theme=nextThemes[Math.floor(Math.random()*nextThemes.length)];
-  const nextFonts=fonts.filter(x=>x!==font);font=nextFonts[Math.floor(Math.random()*nextFonts.length)];
-  applyStyle();
-  document.body.style.backgroundColor=theme.bg;
-  resize();
- }
- applyStyle();resize();window.addEventListener('resize',resize,{passive:true});
- if(!matchMedia('(prefers-reduced-motion: reduce)').matches)raf=requestAnimationFrame(draw);
- document.getElementById('themeToggle')?.addEventListener('click',randomize);
-})();</script></body></html>
+   const a=nodes[i];a.x
